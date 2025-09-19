@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    public class Node
+    public class Node<T>
     {
-        public Person Data { get; set; }
-        public Node Next { get; set; }
+        public T Data { get; set; }
+        public Node<T> Next { get; set; }
 
-        public Node(Person data)
+        public Node(T data)
         {
             Data = data;
             Next = null;

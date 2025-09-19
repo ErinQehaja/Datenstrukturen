@@ -7,18 +7,18 @@ using Common;
 
 namespace DataStructures
 {
-    public class SingleLinkedList
+    public class SingleLinkedList<T>
     {
-        public Node Head { get; private set; }
+        public Node<T> Head { get; private set; }
 
         public SingleLinkedList()
         {
             Head = null;
         }
 
-        public void Add(Person person)
+        public void Add(T data)
         {
-            Node newNode = new Node(person);
+            Node<T> newNode = new Node<T>(data);
 
             if (Head == null)
             {
@@ -26,7 +26,7 @@ namespace DataStructures
             }
             else
             {
-                Node current = Head;
+                Node<T> current = Head;
                 while (current.Next != null)
                 {
                     current = current.Next;
@@ -35,12 +35,12 @@ namespace DataStructures
             }
         }
 
-        public bool Contains(Person person)
+        public bool Contains(T data)
         {
-            Node current = Head;
+            Node<T> current = Head;
             while (current != null)
             {
-                if (current.Data.Equals(person))
+                if (current.Data.Equals(data))
                 {
                     return true;
                 }
