@@ -1,27 +1,25 @@
 using NUnit.Framework;
-using EinfacheListe;
+using Common;
 using System;
 
-namespace EinfacheListe
+namespace DataStructures
 {
     [TestFixture]
-    public class SimpleListTests
+    public class SingleLinkedTest
     {
-        private SimpleList list;
+        private SingleLinkedList list;
 
         [SetUp]
         public void Setup()
         {
-            list = new SimpleList();
+            list = new SingleLinkedList();
         }
 
         [Test]
         public void Add_SinglePerson_HeadIsSet()
         {
             Person person = new Person("Alice");
-
             list.Add(person);
-
             Assert.IsNotNull(list.Head);
             Assert.AreEqual(person.Name, list.Head.Data.Name);
             Assert.IsNull(list.Head.Next);
@@ -33,11 +31,9 @@ namespace EinfacheListe
             Person person1 = new Person("Alice");
             Person person2 = new Person("Bob");
             Person person3 = new Person("Charlie");
-
             list.Add(person1);
             list.Add(person2);
             list.Add(person3);
-
             Assert.IsNotNull(list.Head);
             Assert.AreEqual("Alice", list.Head.Data.Name);
             Assert.IsNotNull(list.Head.Next);
@@ -51,9 +47,7 @@ namespace EinfacheListe
         public void Contains_EmptyList_ReturnsFalse()
         {
             Person person = new Person("Alice");
-
             bool result = list.Contains(person);
-
             Assert.IsFalse(result);
         }
 
@@ -62,9 +56,7 @@ namespace EinfacheListe
         {
             Person person = new Person("Alice");
             list.Add(person);
-
             bool result = list.Contains(new Person("Alice"));
-
             Assert.IsTrue(result);
         }
 
@@ -73,9 +65,7 @@ namespace EinfacheListe
         {
             Person person = new Person("Alice");
             list.Add(person);
-
             bool result = list.Contains(new Person("Bob"));
-
             Assert.IsFalse(result);
         }
 
@@ -85,9 +75,7 @@ namespace EinfacheListe
             list.Add(new Person("Alice"));
             list.Add(new Person("Bob"));
             list.Add(new Person("Charlie"));
-
             bool result = list.Contains(new Person("Charlie"));
-
             Assert.IsTrue(result);
         }
 
@@ -96,7 +84,6 @@ namespace EinfacheListe
         {
             Person person1 = new Person("Alice");
             Person person2 = new Person("Alice");
-
             Assert.IsTrue(person1.Equals(person2));
         }
 
@@ -105,7 +92,6 @@ namespace EinfacheListe
         {
             Person person1 = new Person("Alice");
             Person person2 = new Person("Bob");
-
             Assert.IsFalse(person1.Equals(person2));
         }
     }
