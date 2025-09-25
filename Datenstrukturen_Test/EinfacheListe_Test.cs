@@ -7,12 +7,12 @@ namespace DataStructures
     [TestFixture]
     public class SingleLinkedTest
     {
-        private SingleLinkedList list;
+        private SingleLinkedList<Person> list;
 
         [SetUp]
         public void Setup()
         {
-            list = new SingleLinkedList();
+            list = new SingleLinkedList<Person>();
         }
 
         [Test]
