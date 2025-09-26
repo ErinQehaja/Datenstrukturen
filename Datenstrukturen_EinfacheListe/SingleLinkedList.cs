@@ -53,14 +53,12 @@ namespace DataStructures
         {
             Node<T> newNode = new Node<T>(elementToInsert);
 
-            // Wenn die Liste leer ist oder elementAfter nicht gefunden wird, fügen wir am Anfang hinzu
             if (Head == null)
             {
                 Head = newNode;
                 return;
             }
 
-            // Spezieller Fall: Einfügen vor dem ersten Element
             if (Head.Data.Equals(elementAfter))
             {
                 newNode.Next = Head;
@@ -68,7 +66,6 @@ namespace DataStructures
                 return;
             }
 
-            // Suche nach elementAfter
             Node<T> current = Head;
             while (current.Next != null)
             {
@@ -81,7 +78,6 @@ namespace DataStructures
                 current = current.Next;
             }
 
-            // Wenn elementAfter nicht gefunden wurde, fügen wir am Ende hinzu
             current.Next = newNode;
         }
 
@@ -89,14 +85,12 @@ namespace DataStructures
         {
             Node<T> newNode = new Node<T>(elementToInsert);
 
-            // Wenn die Liste leer ist, fügen wir das Element als erstes Element hinzu
             if (Head == null)
             {
                 Head = newNode;
                 return;
             }
 
-            // Suche nach elementBefore
             Node<T> current = Head;
             while (current != null)
             {
@@ -109,7 +103,6 @@ namespace DataStructures
                 current = current.Next;
             }
 
-            // Wenn elementBefore nicht gefunden wurde, fügen wir am Ende hinzu
             if (current == null && Head != null)
             {
                 current = Head;
