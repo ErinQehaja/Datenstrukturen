@@ -113,5 +113,21 @@ namespace DataStructures
                 current.Next = newNode;
             }
         }
+
+        public int PosOfElement(T element)
+        {
+            int position = 0;
+            Node<T> current = Head;
+            while (current != null)
+            {
+                if (current.Data.Equals(element))
+                {
+                    return position;
+                }
+                current = current.Next;
+                position++;
+            }
+            return -1;
+        }
     }
 }
