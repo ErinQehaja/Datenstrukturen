@@ -48,5 +48,86 @@ namespace DataStructures
             }
             return false;
         }
+
+        public void InsertBefore(T elementAfter, T elementToInsert)
+        {
+            Node<T> newNode = new Node<T>(elementToInsert);
+
+            if (Head == null)
+            {
+                Head = newNode;
+                return;
+            }
+
+            if (Head.Data.Equals(elementAfter))
+            {
+                newNode.Next = Head;
+                Head = newNode;
+                return;
+            }
+
+            Node<T> current = Head;
+            while (current.Next != null)
+            {
+                if (current.Next.Data.Equals(elementAfter))
+                {
+                    newNode.Next = current.Next;
+                    current.Next = newNode;
+                    return;
+                }
+                current = current.Next;
+            }
+
+            current.Next = newNode;
+        }
+
+        public void InsertAfter(T elementBefore, T elementToInsert)
+        {
+            Node<T> newNode = new Node<T>(elementToInsert);
+
+            if (Head == null)
+            {
+                Head = newNode;
+                return;
+            }
+
+            Node<T> current = Head;
+            while (current != null)
+            {
+                if (current.Data.Equals(elementBefore))
+                {
+                    newNode.Next = current.Next;
+                    current.Next = newNode;
+                    return;
+                }
+                current = current.Next;
+            }
+
+            if (current == null && Head != null)
+            {
+                current = Head;
+                while (current.Next != null)
+                {
+                    current = current.Next;
+                }
+                current.Next = newNode;
+            }
+        }
+
+        public int PosOfElement(T element)
+        {
+            int position = 0;
+            Node<T> current = Head;
+            while (current != null)
+            {
+                if (current.Data.Equals(element))
+                {
+                    return position;
+                }
+                current = current.Next;
+                position++;
+            }
+            return -1;
+        }
     }
 }

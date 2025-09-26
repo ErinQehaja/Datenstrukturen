@@ -20,7 +20,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj" />
     <ProjectReference Include="..\Datenstrukturen_EinfacheListe\DataStructures.csproj" />
-    <ProjectReference Include="..\Datenstrukturen_EinfacheListe\Datenstrukturen_EinfacheListe.csproj" />
   </ItemGroup>
 
   <ItemGroup>
