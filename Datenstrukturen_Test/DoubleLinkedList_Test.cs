@@ -246,6 +246,7 @@ namespace DataStructures
         {
             Person beforePerson = new Person("Charlie");
             list.Add(new Person("Alice"));
+            list.Add(1);
             int oldPos = list.PosOfElement(beforePerson);
             Person newPerson = new Person("Bob");
             list.InsertAfter(beforePerson, newPerson);
@@ -258,6 +259,13 @@ namespace DataStructures
             Assert.IsNull(list.Head.Next.Next);
             Assert.AreEqual("Bob", list.Tail.Data.Name);
             Assert.AreEqual("Alice", list.Tail.Previous.Data.Name);
+        }
+
+        [Test]
+        public void EmptyList_InsertInt_IntIsInserted()
+        {
+            var intList = new DoubleLinkedList<int>();
+            intList.InsertAfter(0, 0);
         }
     }
 }

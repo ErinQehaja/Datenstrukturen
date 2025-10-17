@@ -5,8 +5,8 @@ namespace DataStructures
 {
     public class DoubleLinkedList<T>
     {
-        public Node<T> Head { get; set; }
-        public Node<T> Tail { get; set; }
+        public Node<T> Head { get; private set; }
+        public Node<T> Tail { get; private set; }
 
         public DoubleLinkedList()
         {
