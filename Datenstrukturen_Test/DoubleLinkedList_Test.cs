@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using Common;
 using System;
+using DataStructures;
 
 namespace DataStructures
 {
@@ -258,6 +259,52 @@ namespace DataStructures
             Assert.IsNull(list.Head.Next.Next);
             Assert.AreEqual("Bob", list.Tail.Data.Name);
             Assert.AreEqual("Alice", list.Tail.Previous.Data.Name);
+        }
+
+        [Test]
+        public void BubbleSort_EmptyList_NoChange()
+        {
+            list.BubbleSort();
+            Assert.IsNull(list.Head);
+            Assert.IsNull(list.Tail);
+        }
+
+        [Test]
+        public void BubbleSort_SingleElement_NoChange()
+        {
+            list.Add(new Person("Alice"));
+            list.BubbleSort();
+            Assert.AreEqual("Alice", list.Head.Data.Name);
+            Assert.IsNull(list.Head.Next);
+            Assert.AreSame(list.Head, list.Tail);
+        }
+
+        [Test]
+        public void BubbleSort_TwoElements_SortsCorrectly()
+        {
+            list.Add(new Person("Bob"));
+            list.Add(new Person("Alice"));
+            list.BubbleSort();
+            Assert.AreEqual("Alice", list.Head.Data.Name);
+            Assert.AreEqual("Bob", list.Head.Next.Data.Name);
+            Assert.IsNull(list.Head.Next.Next);
+            Assert.AreSame(list.Tail, list.Head.Next);
+        }
+
+        [Test]
+        public void BubbleSort_MultipleElements_SortsCorrectly()
+        {
+            list.Add(new Person("Charlie"));
+            list.Add(new Person("Alice"));
+            list.Add(new Person("Bob"));
+            list.BubbleSort();
+            Assert.AreEqual("Alice", list.Head.Data.Name);
+            Assert.AreEqual("Bob", list.Head.Next.Data.Name);
+            Assert.AreEqual("Charlie", list.Head.Next.Next.Data.Name);
+            Assert.IsNull(list.Head.Next.Next.Next);
+            Assert.AreEqual("Charlie", list.Tail.Data.Name);
+            Assert.AreEqual("Bob", list.Tail.Previous.Data.Name);
+            Assert.AreEqual("Alice", list.Tail.Previous.Previous.Data.Name);
         }
     }
 }

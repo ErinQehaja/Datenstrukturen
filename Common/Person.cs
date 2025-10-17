@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    public class Person
+    public class Person : IComparable<Person>
     {
         public string Name { get; set; }
 
@@ -27,6 +27,12 @@ namespace Common
         public override int GetHashCode()
         {
             return Name.GetHashCode();
+        }
+
+        public int CompareTo(Person other)
+        {
+            if (other == null) return 1;
+            return string.Compare(this.Name, other.Name, StringComparison.Ordinal);
         }
     }
 }
