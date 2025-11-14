@@ -3,10 +3,10 @@ using Common;
 
 namespace DataStructures
 {
-    public class DoubleLinkedList<T>
+    public class DoubleLinkedList<T> where T : IComparable<T>
     {
-        public Node<T> Head { get; set; }
-        public Node<T> Tail { get; set; }
+        public Node<T> Head { get; private set; }
+        public Node<T> Tail { get; private set; }
 
         public DoubleLinkedList()
         {
@@ -29,6 +29,34 @@ namespace DataStructures
                 Tail.Next = newNode;
                 Tail = newNode;
             }
+        }
+
+        public void BubbleSort()
+        {
+            if (Head == null || Head.Next == null) return;
+
+            bool swapped;
+            Node<T> current;
+            Node<T> next;
+
+            do
+            {
+                swapped = false;
+                current = Head;
+
+                while (current.Next != null)
+                {
+                    next = current.Next;
+                    if (current.Data.CompareTo(next.Data) > 0)
+                    {
+                        T temp = current.Data;
+                        current.Data = next.Data;
+                        next.Data = temp;
+                        swapped = true;
+                    }
+                    current = current.Next;
+                }
+            } while (swapped);
         }
 
         public bool Contains(T data)
