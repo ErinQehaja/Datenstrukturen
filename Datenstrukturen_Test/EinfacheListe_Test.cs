@@ -20,9 +20,9 @@ namespace DataStructures
         {
             Person person = new Person("Alice");
             list.Add(person);
-            Assert.IsNotNull(list.Head);
-            Assert.AreEqual(person.Name, list.Head.Data.Name);
-            Assert.IsNull(list.Head.Next);
+            Assert.IsNotNull(list.head);
+            Assert.AreEqual(person.Name, list.head.Data.Name);
+            Assert.IsNull(list.head.Next);
         }
 
         [Test]
@@ -34,13 +34,13 @@ namespace DataStructures
             list.Add(person1);
             list.Add(person2);
             list.Add(person3);
-            Assert.IsNotNull(list.Head);
-            Assert.AreEqual("Alice", list.Head.Data.Name);
-            Assert.IsNotNull(list.Head.Next);
-            Assert.AreEqual("Bob", list.Head.Next.Data.Name);
-            Assert.IsNotNull(list.Head.Next.Next);
-            Assert.AreEqual("Charlie", list.Head.Next.Next.Data.Name);
-            Assert.IsNull(list.Head.Next.Next.Next);
+            Assert.IsNotNull(list.head);
+            Assert.AreEqual("Alice", list.head.Data.Name);
+            Assert.IsNotNull(list.head.Next);
+            Assert.AreEqual("Bob", list.head.Next.Data.Name);
+            Assert.IsNotNull(list.head.Next.Next);
+            Assert.AreEqual("Charlie", list.head.Next.Next.Data.Name);
+            Assert.IsNull(list.head.Next.Next.Next);
         }
 
         [Test]
@@ -104,9 +104,9 @@ namespace DataStructures
             list.InsertBefore(afterPerson, newPerson);
             int newPos = list.PosOfElement(afterPerson);
             Assert.AreEqual(oldPos, newPos); 
-            Assert.IsNotNull(list.Head);
-            Assert.AreEqual("Alice", list.Head.Data.Name);
-            Assert.IsNull(list.Head.Next);
+            Assert.IsNotNull(list.head);
+            Assert.AreEqual("Alice", list.head.Data.Name);
+            Assert.IsNull(list.head.Next);
         }
 
         [Test]
@@ -120,11 +120,11 @@ namespace DataStructures
             int newPos = list.PosOfElement(afterPerson);
             Assert.AreNotEqual(oldPos, newPos); 
             Assert.AreEqual(1, newPos);
-            Assert.IsNotNull(list.Head);
-            Assert.AreEqual("Alice", list.Head.Data.Name);
-            Assert.IsNotNull(list.Head.Next);
-            Assert.AreEqual("Bob", list.Head.Next.Data.Name);
-            Assert.IsNull(list.Head.Next.Next);
+            Assert.IsNotNull(list.head);
+            Assert.AreEqual("Alice", list.head.Data.Name);
+            Assert.IsNotNull(list.head.Next);
+            Assert.AreEqual("Bob", list.head.Next.Data.Name);
+            Assert.IsNull(list.head.Next.Next);
         }
 
         [Test]
@@ -139,13 +139,13 @@ namespace DataStructures
             int newPos = list.PosOfElement(afterPerson);
             Assert.AreNotEqual(oldPos, newPos); 
             Assert.AreEqual(2, newPos);
-            Assert.IsNotNull(list.Head);
-            Assert.AreEqual("Alice", list.Head.Data.Name);
-            Assert.IsNotNull(list.Head.Next);
-            Assert.AreEqual("Bob", list.Head.Next.Data.Name);
-            Assert.IsNotNull(list.Head.Next.Next);
-            Assert.AreEqual("Charlie", list.Head.Next.Next.Data.Name);
-            Assert.IsNull(list.Head.Next.Next.Next);
+            Assert.IsNotNull(list.head);
+            Assert.AreEqual("Alice", list.head.Data.Name);
+            Assert.IsNotNull(list.head.Next);
+            Assert.AreEqual("Bob", list.head.Next.Data.Name);
+            Assert.IsNotNull(list.head.Next.Next);
+            Assert.AreEqual("Charlie", list.head.Next.Next.Data.Name);
+            Assert.IsNull(list.head.Next.Next.Next);
         }
 
         [Test]
@@ -158,11 +158,11 @@ namespace DataStructures
             list.InsertBefore(afterPerson, newPerson);
             int newPos = list.PosOfElement(afterPerson);
             Assert.AreEqual(oldPos, newPos); 
-            Assert.IsNotNull(list.Head);
-            Assert.AreEqual("Alice", list.Head.Data.Name);
-            Assert.IsNotNull(list.Head.Next);
-            Assert.AreEqual("Bob", list.Head.Next.Data.Name);
-            Assert.IsNull(list.Head.Next.Next);
+            Assert.IsNotNull(list.head);
+            Assert.AreEqual("Alice", list.head.Data.Name);
+            Assert.IsNotNull(list.head.Next);
+            Assert.AreEqual("Bob", list.head.Next.Data.Name);
+            Assert.IsNull(list.head.Next.Next);
         }
 
         [Test]
@@ -174,9 +174,9 @@ namespace DataStructures
             list.InsertAfter(beforePerson, newPerson);
             int newPos = list.PosOfElement(beforePerson);
             Assert.AreEqual(oldPos, newPos); 
-            Assert.IsNotNull(list.Head);
-            Assert.AreEqual("Alice", list.Head.Data.Name);
-            Assert.IsNull(list.Head.Next);
+            Assert.IsNotNull(list.head);
+            Assert.AreEqual("Alice", list.head.Data.Name);
+            Assert.IsNull(list.head.Next);
         }
 
         [Test]
@@ -190,11 +190,11 @@ namespace DataStructures
             int newPos = list.PosOfElement(beforePerson);
             Assert.AreEqual(oldPos, newPos); 
             Assert.AreEqual(0, newPos);
-            Assert.IsNotNull(list.Head);
-            Assert.AreEqual("Alice", list.Head.Data.Name);
-            Assert.IsNotNull(list.Head.Next);
-            Assert.AreEqual("Bob", list.Head.Next.Data.Name);
-            Assert.IsNull(list.Head.Next.Next);
+            Assert.IsNotNull(list.head);
+            Assert.AreEqual("Alice", list.head.Data.Name);
+            Assert.IsNotNull(list.head.Next);
+            Assert.AreEqual("Bob", list.head.Next.Data.Name);
+            Assert.IsNull(list.head.Next.Next);
         }
 
         [Test]
@@ -209,13 +209,13 @@ namespace DataStructures
             int newPos = list.PosOfElement(beforePerson);
             Assert.AreEqual(oldPos, newPos); 
             Assert.AreEqual(0, newPos);
-            Assert.IsNotNull(list.Head);
-            Assert.AreEqual("Alice", list.Head.Data.Name);
-            Assert.IsNotNull(list.Head.Next);
-            Assert.AreEqual("Bob", list.Head.Next.Data.Name);
-            Assert.IsNotNull(list.Head.Next.Next);
-            Assert.AreEqual("Charlie", list.Head.Next.Next.Data.Name);
-            Assert.IsNull(list.Head.Next.Next.Next);
+            Assert.IsNotNull(list.head);
+            Assert.AreEqual("Alice", list.head.Data.Name);
+            Assert.IsNotNull(list.head.Next);
+            Assert.AreEqual("Bob", list.head.Next.Data.Name);
+            Assert.IsNotNull(list.head.Next.Next);
+            Assert.AreEqual("Charlie", list.head.Next.Next.Data.Name);
+            Assert.IsNull(list.head.Next.Next.Next);
         }
 
         [Test]
@@ -228,11 +228,11 @@ namespace DataStructures
             list.InsertAfter(beforePerson, newPerson);
             int newPos = list.PosOfElement(beforePerson);
             Assert.AreEqual(oldPos, newPos); 
-            Assert.IsNotNull(list.Head);
-            Assert.AreEqual("Alice", list.Head.Data.Name);
-            Assert.IsNotNull(list.Head.Next);
-            Assert.AreEqual("Bob", list.Head.Next.Data.Name);
-            Assert.IsNull(list.Head.Next.Next);
+            Assert.IsNotNull(list.head);
+            Assert.AreEqual("Alice", list.head.Data.Name);
+            Assert.IsNotNull(list.head.Next);
+            Assert.AreEqual("Bob", list.head.Next.Data.Name);
+            Assert.IsNull(list.head.Next.Next);
         }
     }
 }
