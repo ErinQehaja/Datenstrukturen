@@ -1,40 +1,43 @@
 ﻿using System;
 using Datenstrukturen;
 using Common;
+using SortingAlgorithms;
 
 namespace DataStructures
 {
     public class DoubleLinkedList<T> where T : IComparable<T>
     {
-        public Node<T> Head { get; private set; }
-        public Node<T> Tail { get; private set; }
+        public Node<T> head { get; private set; }
+        public Node<T> tail { get; private set; }
+        private ISortAlgorithm<T> sortAlgorithm;
 
         public DoubleLinkedList()
         {
-            Head = null;
-            Tail = null;
+            head = null;
+            tail = null;
+            sortAlgorithm = new BubbleSort<T>();
         }
 
         public void Add(T data)
         {
             Node<T> newNode = new Node<T>(data);
 
-            if (Head == null)
+            if (head == null)
             {
-                Head = newNode;
-                Tail = newNode;
+                head = newNode;
+                tail = newNode;
             }
             else
             {
-                newNode.Previous = Tail;
-                Tail.Next = newNode;
-                Tail = newNode;
+                newNode.Previous = tail;
+                tail.Next = newNode;
+                tail = newNode;
             }
         }
 
         public void BubbleSort()
         {
-            if (Head == null || Head.Next == null) return;
+            if (head == null || head.Next == null) return;
 
             bool swapped;
             Node<T> current;
@@ -43,7 +46,7 @@ namespace DataStructures
             do
             {
                 swapped = false;
-                current = Head;
+                current = head;
 
                 while (current.Next != null)
                 {
@@ -62,7 +65,7 @@ namespace DataStructures
 
         public bool Contains(T data)
         {
-            Node<T> current = Head;
+            Node<T> current = head;
             while (current != null)
             {
                 if (current.Data.Equals(data))
@@ -78,14 +81,14 @@ namespace DataStructures
         {
             Node<T> newNode = new Node<T>(elementToInsert);
 
-            if (Head == null)
+            if (head == null)
             {
-                Head = newNode;
-                Tail = newNode;
+                head = newNode;
+                tail = newNode;
                 return;
             }
 
-            Node<T> current = Head;
+            Node<T> current = head;
             while (current != null)
             {
                 if (current.Data.Equals(elementAfter))
@@ -93,9 +96,9 @@ namespace DataStructures
                     newNode.Next = current;
                     newNode.Previous = current.Previous;
 
-                    if (current == Head)
+                    if (current == head)
                     {
-                        Head = newNode;
+                        head = newNode;
                     }
                     else
                     {
@@ -107,23 +110,23 @@ namespace DataStructures
                 current = current.Next;
             }
 
-            newNode.Previous = Tail;
-            Tail.Next = newNode;
-            Tail = newNode;
+            newNode.Previous = tail;
+            tail.Next = newNode;
+            tail = newNode;
         }
 
         public void InsertAfter(T elementBefore, T elementToInsert)
         {
             Node<T> newNode = new Node<T>(elementToInsert);
 
-            if (Head == null)
+            if (head == null)
             {
-                Head = newNode;
-                Tail = newNode;
+                head = newNode;
+                tail = newNode;
                 return;
             }
 
-            Node<T> current = Head;
+            Node<T> current = head;
             while (current != null)
             {
                 if (current.Data.Equals(elementBefore))
@@ -131,9 +134,9 @@ namespace DataStructures
                     newNode.Next = current.Next;
                     newNode.Previous = current;
 
-                    if (current == Tail)
+                    if (current == tail)
                     {
-                        Tail = newNode;
+                        tail = newNode;
                     }
                     else
                     {
@@ -145,15 +148,15 @@ namespace DataStructures
                 current = current.Next;
             }
 
-            newNode.Previous = Tail;
-            Tail.Next = newNode;
-            Tail = newNode;
+            newNode.Previous = tail;
+            tail.Next = newNode;
+            tail = newNode;
         }
 
         public int PosOfElement(T element)
         {
             int position = 0;
-            Node<T> current = Head;
+            Node<T> current = head;
             while (current != null)
             {
                 if (current.Data.Equals(element))
@@ -166,5 +169,9 @@ namespace DataStructures
             return -1;
         }
 
+        public void Sort()
+        {
+            sortAlgorithm.Sort(head);
+        }
     }
 }
