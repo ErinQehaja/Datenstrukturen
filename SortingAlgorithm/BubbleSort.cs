@@ -10,32 +10,30 @@ namespace SortingAlgorithms
 {
     public class BubbleSort<T> : ISortAlgorithm<T> where T : IComparable<T>
     {
-        public void Sort(Node<T> head)
+        public Node<T> Sort(Node<T> head)
         {
-            if (head == null || head.Next == null) return;
+            if (head == null || head.Next == null) return head;
 
             bool swapped;
-            Node<T> current;
-            Node<T> next;
-
             do
             {
                 swapped = false;
-                current = head;
+                Node<T> current = head;
 
                 while (current.Next != null)
                 {
-                    next = current.Next;
-                    if (current.Data.CompareTo(next.Data) > 0)
+                    if (current.Data.CompareTo(current.Next.Data) > 0)
                     {
                         T temp = current.Data;
-                        current.Data = next.Data;
-                        next.Data = temp;
+                        current.Data = current.Next.Data;
+                        current.Next.Data = temp;
                         swapped = true;
                     }
                     current = current.Next;
                 }
             } while (swapped);
+
+            return head;
         }
     }
 }

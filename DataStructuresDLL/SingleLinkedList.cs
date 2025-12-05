@@ -14,10 +14,10 @@ namespace DataStructures
         public Node<T> head { get; private set; }
         private ISortAlgorithm<T> sortAlgorithm;
 
-        public SingleLinkedList()
+        public SingleLinkedList(ISortAlgorithm<T> algorithm = null)
         {
             head = null;
-            sortAlgorithm = new BubbleSort<T>();
+            sortAlgorithm = algorithm ?? new BubbleSort<T>();
         }
 
         public void Add(T data)
@@ -136,7 +136,7 @@ namespace DataStructures
 
         public void Sort()
         {
-            sortAlgorithm.Sort(head);
+            head = sortAlgorithm.Sort(head);
         }
     }
 }
