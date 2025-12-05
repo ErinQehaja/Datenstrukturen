@@ -11,11 +11,11 @@ namespace DataStructures
         public Node<T> tail { get; private set; }
         private ISortAlgorithm<T> sortAlgorithm;
 
-        public DoubleLinkedList()
+        public DoubleLinkedList(ISortAlgorithm<T> algorithm = null)
         {
             head = null;
             tail = null;
-            sortAlgorithm = new BubbleSort<T>();
+            sortAlgorithm = algorithm ?? new BubbleSort<T>();
         }
 
         public void Add(T data)
@@ -171,7 +171,26 @@ namespace DataStructures
 
         public void Sort()
         {
-            sortAlgorithm.Sort(head);
+            head = sortAlgorithm.Sort(head);
+
+            if (head == null)
+            {
+                tail = null;
+                return;
+            }
+
+            tail = head;
+            while (tail.Next != null)
+                tail = tail.Next;
+
+            Node<T> current = head;
+            Node<T> prev = null;
+            while (current != null)
+            {
+                current.Previous = prev;
+                prev = current;
+                current = current.Next;
+            }
         }
     }
 }

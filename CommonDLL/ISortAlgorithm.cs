@@ -9,6 +9,6 @@ namespace Datenstrukturen
 {
     public interface ISortAlgorithm<T>
     {
-        void Sort(Node<T> head);
+        Node<T> Sort(Node<T> head); 
     }
 }
