@@ -56,19 +56,6 @@ namespace DataStructures
         }
 
         [Test]
-        public void Clear_AllElementsRemoved_StackEmptyAfterwards()
-        {
-            stack.Push(1);
-            stack.Push(2);
-
-            stack.Clear();
-
-            Assert.AreEqual(0, stack.Count);
-            Assert.IsTrue(stack.IsEmpty());
-            Assert.Throws<InvalidOperationException>(() => stack.Peek());
-        }
-
-        [Test]
         public void Pop_LifoOrder_Maintained()
         {
             stack.Push(1);

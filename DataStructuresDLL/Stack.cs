@@ -53,11 +53,5 @@ namespace DataStructures
         {
             return Count == 0;
         }
-
-        public void Clear()
-        {
-            top = null;
-            Count = 0;
-        }
     }
 }
